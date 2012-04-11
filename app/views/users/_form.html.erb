@@ -1,0 +1,36 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+  	<legend>	Enter User Details</legend>
+  <div >
+    <%= f.label :name, '姓名' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div >
+    <%= f.label :password, '密码'%><br />
+    <%= f.text_field :password %>
+  </div>
+  <div >
+    <%= f.label :password_confirmation, '确认密码'%><br />
+    <%= f.text_field :password_confirmation %>
+  </div>
+  <div >
+    <%= f.label :email, '邮箱'%><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  </fieldset>
+<% end %>
