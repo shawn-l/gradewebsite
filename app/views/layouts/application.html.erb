@@ -25,14 +25,18 @@
       <li><a href="getinvolved.html">Get Involved</a></li>
       <li><a href="directions.html">Directions</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-      
+      <li><%= link_to "我的资料", homepage_path %>
     </ul>
   </div>
-  <div id="navbarAlt">
-    <ul>
-      <li><%= link_to "登陆",login_url %></li>
-    </ul>
-  </div>
+  <% if session[:user_id] %>
+  	  <%= button_to "退出",logout_url, :method => :delete %>
+  <%else%>
+	   <div id="navbarAlt">
+		    <ul>
+		      <li><%= link_to "登陆",login_url %></li>
+		    </ul>
+	   </div>
+   <% end %>
 </div>
 <div id="main">
   <div align="right"><%= image_tag("school-spirit.gif") %></div>

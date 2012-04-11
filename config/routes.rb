@@ -1,11 +1,13 @@
 Gradewebsite::Application.routes.draw do
+  resources :user_infos
+
+  resources :userinfos
+
 controller :sessions do
 	get 'login' => :new
 	post 'login' => :create
 	delete 'logout' => :destriy
 end
-  
-  get "admin/index"
 
   resources :users
 

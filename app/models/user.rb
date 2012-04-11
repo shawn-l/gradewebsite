@@ -1,14 +1,17 @@
 require 'digest/sha2'
 class User < ActiveRecord::Base
+		has_one :user_info
+	
 	validates :name, :presence => true, :uniqueness => true
 	validates :password, :confirmation => true
+	validates :stuNo, :presence => true, :uniqueness => true
 	attr_accessor :password_confirmation
 	attr_reader :password
 	validate :password_must_be_present
 
 	#verify the user
-	def User.authenticate(name, password)
-		if user = find_by_name(name)
+	def User.authenticate(stuNo, password)
+		if user = find_by_stuNo(stuNo)
 			if user.hashed_password == encrypt_password(password,user.salt)
 				user
 			end

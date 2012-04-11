@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	if user = User.authenticate(params[:name],params[:password])
+  	if user = User.authenticate(params[:stuNo],params[:password])
   		session[:user_id] = user.id
-  		redirect_to  homepage_url, :notice => "User  #{user.name} was sucessfully updated."
+  		redirect_to  homepage_url
   	else
   		redirect_to login_url,:alert => "Invalid user/password combination"
   	end
