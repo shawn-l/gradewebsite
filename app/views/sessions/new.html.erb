@@ -1,4 +1,7 @@
-<%= form_tag %>
+<% if alert %>
+	<p id ="notice" ><%= alert %></p>
+<% end %>
+<%= form_tag do %>
  	<fieldset>
  		<legend>登陆</legend>
  		
@@ -11,7 +14,11 @@
  			<%= password_field_tag :password, params[:password] %>
  		</div>
  		<div>
- 			<%= submit_tag "登陆" %>
+ 			<%= submit_tag "Login" %>
  		</div>
  	</fieldset>
  <% end %>
+ <div>
+ 		<p>没有账号？</p>
+ 		<%= button_to '注册', new_user_path,:method => :get %>
+ </div>

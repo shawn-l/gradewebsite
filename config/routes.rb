@@ -1,11 +1,10 @@
 Gradewebsite::Application.routes.draw do
-
-  get "sessions/new"
-
-  get "sessions/create"
-
-  get "sessions/destriy"
-
+controller :sessions do
+	get 'login' => :new
+	post 'login' => :create
+	delete 'logout' => :destriy
+end
+  
   get "admin/index"
 
   resources :users

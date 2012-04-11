@@ -1,6 +1,6 @@
-require 'digeest/sha2'
+require 'digest/sha2'
 class User < ActiveRecord::Base
-	validates :name, :persence => true, :uniqueness => true
+	validates :name, :presence => true, :uniqueness => true
 	validates :password, :confirmation => true
 	attr_accessor :password_confirmation
 	attr_reader :password
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def User.encrypt_password(password, salt)
-		Digest::SSH2.hexdigest(password + "shawn" + salt)
+		Digest::SHA2.hexdigest(password + "shawn" + salt)
 	end
 	
 	def password=(password)
